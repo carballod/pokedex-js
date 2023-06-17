@@ -1,16 +1,24 @@
 const listaPokemon = document.querySelector("#lista-pokemon");
 const URL = "https://pokeapi.co/api/v2/";
 
-for (let i = 1; i <= 151; i++) {
-  fetch(`${URL}pokemon/${i}`)
-    .then((response) => response.json())
-    .then((data) => mostrarPokemon(data))
-    .catch((error) => console.log(error));
+
+const obtenerPokemon = async () => {
+
+  try {
+    for (let i = 1; i <= 151; i++) {
+      const response = await fetch(`${URL}pokemon/${i}`)
+      const data = await response.json()
+      mostrarPokemon(data)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+
 }
 
 const mostrarPokemon = (data) => {
+
   const tipos = data.types.map((tipo) => 
-    
       `<p class="tipo">${tipo.type.name}</p>`
     )
   .join("");
@@ -39,4 +47,7 @@ const mostrarPokemon = (data) => {
       </div>
     </div>`;
   listaPokemon.appendChild(div);
+  
 };
+
+obtenerPokemon();

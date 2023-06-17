@@ -1,6 +1,6 @@
 :root {
-    --color-white: #ececec;
-    --color-gray: rgb(226, 223, 223);
+    --color-violeta: #e17055;
+    --color-blanco: #f8f5f5;
 }
 
 * {
@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: var(--color-white);
+    background-color: var(--color-violeta);
     min-height: 100vh;
 }
 
@@ -57,7 +57,7 @@ main {
 
 .pokemon {
     border-radius: 1rem;
-    background-color: white;
+    background-color: #fab1a0;
     box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .25);
     padding-block: 1rem;
     text-transform: uppercase;
@@ -74,7 +74,7 @@ main {
     font-size: 6rem;
     font-weight: 800;
     z-index: -1;
-    color: var(--color-gray);
+    color: var(--color-blanco);
 }
 
 .pokemon-imagen {
@@ -106,7 +106,7 @@ main {
 }
 
 .pokemon-id {
-    background-color: var(--color-gray);
+    background-color: var(--color-blanco);
     padding: .25rem .5rem;
     border-radius: 100vmax;
     font-size: .75rem;
@@ -129,8 +129,8 @@ main {
 .tipo {
     padding: .25rem .5rem;
     border-radius: 100vmax;
-    background-color: #8484d5;
-    color:var(--color-white);
+    background-color: #ff7675;
+    color:var(--color-blanco);
 }
 
 .pokemon-stats {
@@ -140,7 +140,7 @@ main {
 }
 
 .stats {
-    background-color: var(--color-gray);
+    background-color: var(--color-blanco);
     padding: .25rem .5rem;
     border-radius: 100vmax;
 }
