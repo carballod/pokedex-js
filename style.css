@@ -1,6 +1,6 @@
 :root {
     --color-white: #ececec;
-    --color-gray: rgb(196, 193, 193);
+    --color-gray: rgb(226, 223, 223);
 }
 
 * {
@@ -129,6 +129,8 @@ main {
 .tipo {
     padding: .25rem .5rem;
     border-radius: 100vmax;
+    background-color: #8484d5;
+    color:var(--color-white);
 }
 
 .pokemon-stats {
