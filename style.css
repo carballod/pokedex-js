@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: black;
+    color: #d63031;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -23,12 +23,17 @@ header {
 
 .nav {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row;
+    gap: 2rem;
     align-items: flex-start;
+    justify-content: center;
     padding-inline: 2rem;
     max-width: 1000px;
     margin: 0 auto;
+}
+
+#pokemon-logo:hover {
+    cursor: pointer;
 }
 
 main {
@@ -88,6 +93,51 @@ main {
     max-width: 6rem;
 }
 
+.div-buscador {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.buscador-input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #f4f2f2;
+    border: none;
+    color: #646464;
+    padding: 0.7rem 1rem;
+    border-radius: 30px;
+    width: 12em;
+    transition: all ease-in-out .5s;
+    margin-right: -2rem;
+}
+
+.buscador-input:hover, .buscador-input:focus {
+    box-shadow: 0 0 1em #00000013;
+}
+
+.buscador-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #fab1a0;
+}
+
+.buscador-input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+}
+
+.buscador-icon:hover {
+    cursor: pointer;
+}
+
+.buscador-icon {
+    height: 1.3em;
+  width: 1.3em;
+  fill: #b4b4b4;
+}
+
+
 .pokemon-info {
     display: flex;
     flex-direction: column;
@@ -130,7 +180,7 @@ main {
     padding: .25rem .5rem;
     border-radius: 100vmax;
     background-color: #ff7675;
-    color:var(--color-blanco);
+    color: var(--color-blanco);
 }
 
 .pokemon-stats {

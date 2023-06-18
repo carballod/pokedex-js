@@ -1,27 +1,50 @@
 const listaPokemon = document.querySelector("#lista-pokemon");
+const botonBuscar = document.querySelector("#buscar-pokemon");
+const logo = document.querySelector("#pokemon-logo");
 const URL = "https://pokeapi.co/api/v2/";
 
+logo.addEventListener("click", () => {
+  location.reload();
+});
 
-const obtenerPokemon = async () => {
+const buscarPokemon = async () => {
+  const valor = buscador.value.trim();
 
-  try {
-    for (let i = 1; i <= 151; i++) {
-      const response = await fetch(`${URL}pokemon/${i}`)
-      const data = await response.json()
-      mostrarPokemon(data)
-    }
-  } catch (error) {
-    console.log(error)
+  if (valor === "" || valor > 151) {
+    buscador.value = "";
+    return;
   }
 
-}
+  try {
+    const response = await fetch(`${URL}pokemon/${valor}`);
+    const data = await response.json();
+    listaPokemon.innerHTML = "";
+    mostrarPokemon(data);
+  } catch (error) {
+    console.log(error);
+  }
+
+  buscador.value = "";
+};
+
+botonBuscar.addEventListener("click", buscarPokemon);
+
+const mostrarTodosPokemon = async () => {
+  try {
+    for (let i = 1; i <= 151; i++) {
+      const response = await fetch(`${URL}pokemon/${i}`);
+      const data = await response.json();
+      mostrarPokemon(data);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const mostrarPokemon = (data) => {
-
-  const tipos = data.types.map((tipo) => 
-      `<p class="tipo">${tipo.type.name}</p>`
-    )
-  .join("");
+  const tipos = data.types
+    .map((tipo) => `<p class="tipo">${tipo.type.name}</p>`)
+    .join("");
 
   const div = document.createElement("div");
   div.classList.add("pokemon");
@@ -47,7 +70,6 @@ const mostrarPokemon = (data) => {
       </div>
     </div>`;
   listaPokemon.appendChild(div);
-  
 };
 
-obtenerPokemon();
+mostrarTodosPokemon();
