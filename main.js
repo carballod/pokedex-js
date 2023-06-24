@@ -30,23 +30,39 @@ const buscarPokemon = async () => {
 
 botonBuscar.addEventListener("click", buscarPokemon);
 
-const mostrarTodosPokemon = async () => {
+const cargarPokemon = async () => {
   try {
+    const response = await fetch(`${URL}pokemon?limit=${POKEMON_ORIGINALES}`);
+    const data = await response.json();
+
     for (let i = 1; i <= POKEMON_ORIGINALES; i++) {
-      const response = await fetch(`${URL}pokemon/${i}`);
-      const data = await response.json();
-      mostrarPokemon(data);
+      const pokemon = data.results.find((p) => obtenerIdPokemonDesdeUrl(p.url) === i);
+      if (pokemon) {
+        const pokemonData = await obtenerDatosPokemon(pokemon.url);
+        mostrarPokemon(pokemonData);
+      }
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-const mostrarPokemon = (data) => {
-  const tipos = data.types
-    .map((tipo) => `<p class="tipo">${tipo.type.name}</p>`)
-    .join("");
+const obtenerDatosPokemon = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+const obtenerIdPokemonDesdeUrl = (url) => {
+  const partes = url.split("/");
+  return parseInt(partes[partes.length - 2]);
+};
+
+const mostrarPokemon = (data) => {
   const div = document.createElement("div");
   div.classList.add("pokemon");
   div.innerHTML = `
@@ -62,15 +78,8 @@ const mostrarPokemon = (data) => {
         <p class="pokemon-id">#${data.id}</p>
         <h2 class="pokemon-nombre">${data.name}</h2>
       </div>
-      <div class="pokemon-tipos">
-        ${tipos}
-      </div>
-      <div class="pokemon-stats">
-        <p class="stats">${data.height}M</p>
-        <p class="stats">${data.weight}KG</p>
-      </div>
     </div>`;
   listaPokemon.appendChild(div);
 };
 
-mostrarTodosPokemon();
+cargarPokemon();
