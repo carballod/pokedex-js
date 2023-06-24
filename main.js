@@ -2,6 +2,7 @@ const listaPokemon = document.querySelector("#lista-pokemon");
 const botonBuscar = document.querySelector("#buscar-pokemon");
 const logo = document.querySelector("#pokemon-logo");
 const URL = "https://pokeapi.co/api/v2/";
+const POKEMON_ORIGINALES = 151;
 
 logo.addEventListener("click", () => {
   location.reload();
@@ -10,7 +11,7 @@ logo.addEventListener("click", () => {
 const buscarPokemon = async () => {
   const valor = buscador.value.trim();
 
-  if (valor === "" || valor > 151) {
+  if (valor === "" || valor > POKEMON_ORIGINALES) {
     buscador.value = "";
     return;
   }
@@ -31,7 +32,7 @@ botonBuscar.addEventListener("click", buscarPokemon);
 
 const mostrarTodosPokemon = async () => {
   try {
-    for (let i = 1; i <= 151; i++) {
+    for (let i = 1; i <= POKEMON_ORIGINALES; i++) {
       const response = await fetch(`${URL}pokemon/${i}`);
       const data = await response.json();
       mostrarPokemon(data);

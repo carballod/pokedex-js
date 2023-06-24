@@ -1,5 +1,5 @@
 :root {
-    --color-violeta: #e17055;
+    --color-naranja: #e17055;
     --color-blanco: #f8f5f5;
 }
 
@@ -12,13 +12,12 @@
 }
 
 body {
-    background-color: var(--color-violeta);
+    background-color: var(--color-naranja);
     min-height: 100vh;
 }
 
 header {
     padding-block: 1rem;
-    box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, .5);
 }
 
 .nav {
