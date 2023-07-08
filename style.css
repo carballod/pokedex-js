@@ -112,7 +112,8 @@ main {
     margin-right: -2rem;
 }
 
-.buscador-input:hover, .buscador-input:focus {
+.buscador-input:hover,
+.buscador-input:focus {
     box-shadow: 0 0 1em #00000013;
 }
 
@@ -132,10 +133,9 @@ main {
 
 .buscador-icon {
     height: 1.3em;
-  width: 1.3em;
-  fill: #b4b4b4;
+    width: 1.3em;
+    fill: #b4b4b4;
 }
-
 
 .pokemon-info {
     display: flex;
@@ -192,4 +192,38 @@ main {
     background-color: var(--color-blanco);
     padding: .25rem .5rem;
     border-radius: 100vmax;
+}
+
+/* Estilos para el paginador */
+
+.paginador {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.paginador-btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-blanco);
+    color: var(--color-naranja);
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.paginador-btn:last-child {
+    margin-right: 0;
+}
+
+.paginador-btn:hover {
+    background-color: #f4f2f2;
+}
+
+.paginador-btn:disabled {
+    background-color: #d1d1d1;
+    cursor: not-allowed;
 }

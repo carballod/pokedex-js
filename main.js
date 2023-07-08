@@ -1,8 +1,15 @@
 const listaPokemon = document.querySelector("#lista-pokemon");
-const botonBuscar = document.querySelector("#buscar-pokemon");
+const buscador = document.querySelector("#buscador");
+const botonBuscar = document.querySelector(".buscador-icon");
 const logo = document.querySelector("#pokemon-logo");
 const URL = "https://pokeapi.co/api/v2/";
-const POKEMON_ORIGINALES = 151;
+
+const paginador = document.querySelector("#paginador");
+const botonAnterior = document.querySelector("#anterior");
+const botonSiguiente = document.querySelector("#siguiente");
+let offset = 0;
+const limite = 9;
+let totalPokemones = 0;
 
 logo.addEventListener("click", () => {
   location.reload();
@@ -11,8 +18,7 @@ logo.addEventListener("click", () => {
 const buscarPokemon = async () => {
   const valor = buscador.value.trim();
 
-  if (valor === "" || valor > POKEMON_ORIGINALES) {
-    buscador.value = "";
+  if (valor === "") {
     return;
   }
 
@@ -32,19 +38,58 @@ botonBuscar.addEventListener("click", buscarPokemon);
 
 const cargarPokemon = async () => {
   try {
-    const response = await fetch(`${URL}pokemon?limit=${POKEMON_ORIGINALES}`);
+    const response = await fetch(`${URL}pokemon`);
     const data = await response.json();
+    totalPokemones = data.count;
 
-    for (let i = 1; i <= POKEMON_ORIGINALES; i++) {
-      const pokemon = data.results.find((p) => obtenerIdPokemonDesdeUrl(p.url) === i);
-      if (pokemon) {
-        const pokemonData = await obtenerDatosPokemon(pokemon.url);
-        mostrarPokemon(pokemonData);
-      }
-    }
+    botonAnterior.addEventListener("click", cargarPaginaAnterior);
+    botonSiguiente.addEventListener("click", cargarPaginaSiguiente);
+    cargarPagina();
   } catch (error) {
     console.log(error);
   }
+};
+
+const cargarPagina = async () => {
+  try {
+    const response = await fetch(`${URL}pokemon?offset=${offset}&limit=${limite}`);
+    const data = await response.json();
+
+    listaPokemon.innerHTML = "";
+
+    for (const pokemon of data.results) {
+      const pokemonData = await obtenerDatosPokemon(pokemon.url);
+      mostrarPokemon(pokemonData);
+    }
+
+    actualizarPaginador();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const cargarPaginaAnterior = () => {
+  offset -= limite;
+  if (offset < 0) {
+    offset = 0;
+  }
+  cargarPagina();
+};
+
+const cargarPaginaSiguiente = () => {
+  offset += limite;
+  if (offset >= totalPokemones) {
+    offset -= limite;
+  }
+  cargarPagina();
+};
+
+const actualizarPaginador = () => {
+  const paginaActual = offset / limite + 1;
+  const totalPaginas = Math.ceil(totalPokemones / limite);
+
+  botonAnterior.disabled = paginaActual === 1;
+  botonSiguiente.disabled = paginaActual === totalPaginas;
 };
 
 const obtenerDatosPokemon = async (url) => {
@@ -55,11 +100,6 @@ const obtenerDatosPokemon = async (url) => {
   } catch (error) {
     console.log(error);
   }
-};
-
-const obtenerIdPokemonDesdeUrl = (url) => {
-  const partes = url.split("/");
-  return parseInt(partes[partes.length - 2]);
 };
 
 const mostrarPokemon = (data) => {
