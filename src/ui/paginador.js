@@ -3,7 +3,9 @@ import { cargarPagina, totalPokemones } from "./pokedex.js";
 const botonAnterior = document.querySelector("#anterior");
 const botonSiguiente = document.querySelector("#siguiente");
 export let offset = 0;
-const limite = 9;
+export const limite = 9;
+
+
 
 export const cargarPaginaAnterior = () => {
   offset -= limite;

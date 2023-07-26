@@ -5,5 +5,3 @@ export const recargarPagina = () => {
     location.reload();
   });
 }
-
-recargarPagina();

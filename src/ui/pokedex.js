@@ -1,28 +1,20 @@
 import { obtenerDatosPokemon } from "../api/pokemonAPI.js";
 import { mostrarPokemon } from "../mapeadores/pokemonMap.js";
-import { cargarPaginaAnterior, cargarPaginaSiguiente, actualizarPaginador, offset } from "./paginador.js";
+import { cargarPaginaAnterior, cargarPaginaSiguiente, offset, limite } from "./paginador.js";
 import { recargarPagina } from "./recargarPagina.js";
-import { buscarPokemon } from './buscador.js';
-
+import { buscadorDePokemon } from "./buscador.js";
 
 const listaPokemon = document.querySelector("#lista-pokemon");
 const botonAnterior = document.querySelector("#anterior");
 const botonSiguiente = document.querySelector("#siguiente");
-const botonBuscar = document.querySelector(".buscador-icon");
-const buscador = document.querySelector("#buscador");
-const limite = 9;
 export let totalPokemones = 0;
 
-botonBuscar.addEventListener("click", () => {
-  buscarPokemon(buscador);
-});
-
 recargarPagina();
+buscadorDePokemon();
 
 const cargarPokemon = async () => {
   try {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon');
-    const data = await response.json();
+    const data = await obtenerDatosPokemon('https://pokeapi.co/api/v2/pokemon');
     totalPokemones = data.count;
 
     botonAnterior.addEventListener("click", cargarPaginaAnterior);
@@ -35,17 +27,13 @@ const cargarPokemon = async () => {
 
 export const cargarPagina = async () => {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limite}`);
-    const data = await response.json();
-
+    const data = await obtenerDatosPokemon(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limite}`);
     listaPokemon.innerHTML = "";
 
-    for (const pokemon of data.results) {
-      const pokemonData = await obtenerDatosPokemon(pokemon.url);
-      mostrarPokemon(pokemonData);
-    }
+    const pokemonPromises = data.results.map((pokemon) => obtenerDatosPokemon(pokemon.url));
 
-    actualizarPaginador();
+    const pokemonsData = await Promise.all(pokemonPromises);
+    pokemonsData.forEach((pokemonData) => mostrarPokemon(pokemonData));
   } catch (error) {
     console.log(error);
   }

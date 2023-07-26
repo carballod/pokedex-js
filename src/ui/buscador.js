@@ -1,15 +1,14 @@
+import { obtenerDatosPokemon } from "../api/pokemonAPI.js";
 import { mostrarPokemon } from "../mapeadores/pokemonMap.js";
 
-export const buscarPokemon = async () => {
-  const valor = buscador.value.trim();
+const buscador = document.querySelector("#buscador");
 
-  if (valor === "") {
-    return;
-  }
+const buscarUnPokemon = async () => {
+  const valor = buscador.value.trim();
+  if (valor === "") return;
 
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${valor}`);
-    const data = await response.json();
+    const data = await obtenerDatosPokemon(`https://pokeapi.co/api/v2/pokemon/${valor}`);
     document.querySelector("#lista-pokemon").innerHTML = "";
     mostrarPokemon(data);
   } catch (error) {
@@ -17,4 +16,10 @@ export const buscarPokemon = async () => {
   }
 
   buscador.value = "";
+};
+
+export const buscadorDePokemon = () => {
+  buscador.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") buscarUnPokemon(buscador)
+  })
 };

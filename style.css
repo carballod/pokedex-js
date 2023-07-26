@@ -127,10 +127,6 @@ main {
     color: #ccc;
 }
 
-.buscador-icon:hover {
-    cursor: pointer;
-}
-
 .buscador-icon {
     height: 1.3em;
     width: 1.3em;
