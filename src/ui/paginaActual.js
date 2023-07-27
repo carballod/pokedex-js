@@ -1,7 +1,9 @@
 import { obtenerDatosPokemon } from "../api/pokemonAPI.js";
 import { mostrarPokemon } from "../mapeadores/pokemonMap.js";
-import { actualizarPaginador } from "./paginador.js";
+import { actualizarPaginador, cargarPaginaAnterior, cargarPaginaSiguiente } from "./paginador.js";
 
+const botonAnterior = document.querySelector("#anterior");
+const botonSiguiente = document.querySelector("#siguiente");
 const listaPokemon = document.querySelector("#lista-pokemon");
 export const limite = 9;
 
@@ -21,8 +23,12 @@ export const pokemonData = {
       traerPokemones.forEach((pokemones) => mostrarPokemon(pokemones));
   
       pokemonData.totalPokemones = data.count;
+
+      botonAnterior.addEventListener("click", cargarPaginaAnterior);
+      botonSiguiente.addEventListener("click", cargarPaginaSiguiente);
   
       actualizarPaginador();
+      
     } catch (error) {
       console.log(error);
     }

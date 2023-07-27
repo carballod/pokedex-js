@@ -3,7 +3,6 @@ import { cargarPaginaActual, limite, pokemonData } from "./paginaActual.js";
 const botonAnterior = document.querySelector("#anterior");
 const botonSiguiente = document.querySelector("#siguiente");
 
-
 export const cargarPaginaAnterior = () => {
   pokemonData.offset -= limite;
   if (pokemonData.offset < 0) {
