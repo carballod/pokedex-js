@@ -1,31 +1,28 @@
-import { cargarPagina, totalPokemones } from "./pokedex.js";
+import { cargarPaginaActual, limite, pokemonData } from "./paginaActual.js";
 
 const botonAnterior = document.querySelector("#anterior");
 const botonSiguiente = document.querySelector("#siguiente");
-export let offset = 0;
-export const limite = 9;
-
 
 
 export const cargarPaginaAnterior = () => {
-  offset -= limite;
-  if (offset < 0) {
-    offset = 0;
+  pokemonData.offset -= limite;
+  if (pokemonData.offset < 0) {
+    pokemonData.offset = 0;
   }
-  cargarPagina();
+  cargarPaginaActual();
 };
 
 export const cargarPaginaSiguiente = () => {
-  offset += limite;
-  if (offset >= totalPokemones) {
-    offset -= limite;
+  pokemonData.offset += limite;
+  if (pokemonData.offset >= pokemonData.totalPokemones) {
+    pokemonData.offset -= limite;
   }
-  cargarPagina();
+  cargarPaginaActual();
 };
 
 export const actualizarPaginador = () => {
-  const paginaActual = offset / limite + 1;
-  const totalPaginas = Math.ceil(totalPokemones / limite);
+  const paginaActual = pokemonData.offset / limite + 1;
+  const totalPaginas = Math.ceil(pokemonData.totalPokemones / limite);
 
   botonAnterior.disabled = paginaActual === 1;
   botonSiguiente.disabled = paginaActual === totalPaginas;
