@@ -6,8 +6,8 @@ const buscador = document.querySelector("#buscador");
 
 const buscarUnPokemon = async (nombrePokemon) => {
   try {
+    if (isNaN(nombrePokemon)) return;
     const data = await obtenerDatosPokemon(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`);
-    if ( data === undefined ) return;
     document.querySelector("#lista-pokemon").innerHTML = "";
 
     const pokemon = mapearPokemon(data);
