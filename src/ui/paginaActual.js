@@ -1,5 +1,6 @@
 import { obtenerDatosPokemon } from "../api/pokemonAPI.js";
-import { mostrarPokemon } from "../mapeadores/pokemonMap.js";
+import { mapearPokemon } from "../mapeadores/mapearPokemon.js";
+import { mostrarPokemon } from "./mostrarPokemon.js";
 import { actualizarPaginador, cargarPaginaAnterior, cargarPaginaSiguiente } from "./paginador.js";
 
 const botonAnterior = document.querySelector("#anterior");
@@ -17,11 +18,12 @@ export const pokemonData = {
       const data = await obtenerDatosPokemon(`https://pokeapi.co/api/v2/pokemon?offset=${pokemonData.offset}&limit=${limite}`);
       listaPokemon.innerHTML = "";
   
-      const pokemonPromises = data.results.map((pokemon) => obtenerDatosPokemon(pokemon.url));
-  
-      const traerPokemones = await Promise.all(pokemonPromises);
-      traerPokemones.forEach((pokemones) => mostrarPokemon(pokemones));
-  
+      const traerPokemons = data.results.map((pokemon) => obtenerDatosPokemon(pokemon.url));
+      const pokemonsPorPagina = await Promise.all(traerPokemons);
+
+      const pokemonsMapeados = pokemonsPorPagina.map((pokemonPorPagina) => mapearPokemon(pokemonPorPagina));
+      pokemonsMapeados.forEach((pokemon) => mostrarPokemon(pokemon));
+
       pokemonData.totalPokemones = data.count;
 
       botonAnterior.addEventListener("click", cargarPaginaAnterior);

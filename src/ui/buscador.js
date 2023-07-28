@@ -1,25 +1,30 @@
 import { obtenerDatosPokemon } from "../api/pokemonAPI.js";
-import { mostrarPokemon } from "../mapeadores/pokemonMap.js";
+import { mapearPokemon } from "../mapeadores/mapearPokemon.js";
+import { mostrarPokemon } from "./mostrarPokemon.js";
 
 const buscador = document.querySelector("#buscador");
 
-const buscarUnPokemon = async () => {
-  const valor = buscador.value.trim();
-  if (valor === "") return;
-
+const buscarUnPokemon = async (nombrePokemon) => {
   try {
-    const data = await obtenerDatosPokemon(`https://pokeapi.co/api/v2/pokemon/${valor}`);
+    const data = await obtenerDatosPokemon(`https://pokeapi.co/api/v2/pokemon/${nombrePokemon}`);
+    if ( data === undefined ) return;
     document.querySelector("#lista-pokemon").innerHTML = "";
-    mostrarPokemon(data);
-  } catch (error) {
-    console.log(error);
-  }
 
-  buscador.value = "";
+    const pokemon = mapearPokemon(data);
+    mostrarPokemon(pokemon);
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export const buscadorDePokemon = () => {
   buscador.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") buscarUnPokemon(buscador)
-  })
+    if (event.key === "Enter") {
+      const valor = buscador.value.trim();
+      if (valor === "") return;
+      
+      buscarUnPokemon(valor);
+      buscador.value = "";
+    }
+  });
 };
