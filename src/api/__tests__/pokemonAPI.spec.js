@@ -1,4 +1,3 @@
-import fetchMock from "jest-fetch-mock";
 import { obtenerDatosPokemon } from "../pokemonAPI";
 
 const URL = "https://pokeapi.co/api/v2/pokemon/1";
@@ -11,15 +10,16 @@ const pokemon = {
 };
 
 describe("funcion obtenerDatosPokemon", () => {
-  // simula funcion fetch
+  // simula la función fetch
   beforeEach(() => {
-    jest.spyOn(global, "fetch").mockResolvedValue({
+    global.fetch = jest.fn().mockResolvedValue({
       json: jest.fn().mockResolvedValue(pokemon),
     });
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    global.fetch.mockClear();
+    delete global.fetch;
   });
 
   test("llama al fetch con la URL correcta", async () => {

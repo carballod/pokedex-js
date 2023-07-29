@@ -1,6 +1,6 @@
-const listaPokemon = document.querySelector("#lista-pokemon");
-
 export const mostrarPokemon = (pokemon) => {
+  const listaPokemon = document.querySelector("#lista-pokemon");
+
   const div = document.createElement("div");
   div.classList.add("pokemon");
   div.innerHTML = `
