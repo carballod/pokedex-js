@@ -7,12 +7,19 @@
     "start_url": "/",
     "scope": "./",
     "id": "/",
+    "description": "Pokedex que muestra la información general de todos los pokemons registrados",
     "icons": [
         {
             "src": "./icon/icon512.png",
             "type": "image/png",
             "sizes": "512x512",
             "purpose": "any"
+        },
+        {
+            "src": "./icon/maskable_icon512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
         }
     ]
 }
