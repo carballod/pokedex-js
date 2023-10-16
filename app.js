@@ -12,11 +12,11 @@ window.addEventListener("beforeinstallprompt", event => {
 
 document.addEventListener("DOMContentLoaded", event => {
 
-    document.querySelector("#btn-instalar").addEventListener("click", async (event) => {
+    document.querySelector("#btn-instalar").addEventListener("click", () => {
         if (bip) {
             bip.prompt();
         } else {
-            alert("No hay nada para instalar");
+            document.querySelector("#btn-instalar").style.display = "none";
         }
     });
 

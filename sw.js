@@ -9,7 +9,6 @@ self.addEventListener("install", async () => {
         "https://pokeapi.co/api/v2/pokemon"
     ]);
 
-    console.log("Instalando el service worker y guardando en cache los recursos");
 });
 
 self.addEventListener("activate", (event) => {});

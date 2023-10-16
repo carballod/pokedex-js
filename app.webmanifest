@@ -8,6 +8,18 @@
     "scope": "./",
     "id": "/",
     "description": "Pokedex que muestra la información general de todos los pokemons registrados",
+    "screenshots": [
+        {
+            "src": "./img/screenshots/screenshot1.png",
+            "type": "image/png",
+            "sizes": "377x832"
+        },
+        {
+            "src": "./img/screenshots/screenshot2.png",
+            "type": "image/png",
+            "sizes": "377x833"
+        }
+    ],
     "icons": [
         {
             "src": "./icon/icon512.png",
