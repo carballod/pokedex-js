@@ -223,3 +223,17 @@ main {
     background-color: #d1d1d1;
     cursor: not-allowed;
 }
+
+
+@media (display-mode: standalone) {
+    #btn-instalar {
+        display: none;
+    }
+}
+
+@media (display-mode: browser) {
+    #btn-instalar {
+        background-color: black;
+        color: white
+    }
+}
