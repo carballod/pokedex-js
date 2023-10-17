@@ -5,7 +5,7 @@
     "theme_color": "#d63031",
     "background_color": "#232322",
     "start_url": "/",
-    "scope": "./",
+    "scope": "/",
     "id": "/",
     "description": "Aplicación que muestra la información general de todos los pokemons registrados",
     "screenshots": [
@@ -18,7 +18,7 @@
         {
             "src": "./img/screenshots/screenshot1.png",
             "type": "image/png",
-            "sizes": "777x1600",
+            "sizes": "377x832",
             "form_factor": "narrow"
         }
     ],
