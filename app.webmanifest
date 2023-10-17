@@ -1,0 +1,33 @@
+{
+    "name": "Pokedex PWA",
+    "short_name": "PokePWA",
+    "display": "standalone",
+    "theme_color": "#d63031",
+    "background_color": "#232322",
+    "start_url": "/",
+    "scope": "./",
+    "id": "/",
+    "description": "Pokedex que muestra la información general de todos los pokemons registrados",
+    "screenshots": [
+        {
+            "src": "./img/screenshots/screenshot1.png",
+            "type": "image/png",
+            "sizes": "377x832",
+            "form_factor": "wide"
+        }
+    ],
+    "icons": [
+        {
+            "src": "./icon/icon512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        },
+        {
+            "src": "./icon/maskable_icon512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        }
+    ]
+}
