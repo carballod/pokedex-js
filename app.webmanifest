@@ -4,8 +4,8 @@
     "display": "standalone",
     "theme_color": "#d63031",
     "background_color": "#232322",
-    "start_url": "/",
-    "scope": "/",
+    "start_url": "/pwa",
+    "scope": "./",
     "id": "/",
     "description": "Aplicación que muestra la información general de todos los pokemons registrados",
     "screenshots": [
