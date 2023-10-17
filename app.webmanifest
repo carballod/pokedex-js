@@ -1,5 +1,5 @@
 {
-    "name": "Pokedex PWA",
+    "name": "Pokedex",
     "short_name": "PokePWA",
     "display": "standalone",
     "theme_color": "#d63031",
@@ -7,13 +7,19 @@
     "start_url": "/",
     "scope": "./",
     "id": "/",
-    "description": "Pokedex que muestra la información general de todos los pokemons registrados",
+    "description": "Aplicación que muestra la información general de todos los pokemons registrados",
     "screenshots": [
+        {
+            "src": "./img/screenshots/desktop.png",
+            "type": "image/png",
+            "sizes": "1528x838",
+            "form_factor": "wide"
+        },
         {
             "src": "./img/screenshots/screenshot1.png",
             "type": "image/png",
-            "sizes": "377x832",
-            "form_factor": "wide"
+            "sizes": "777x1600",
+            "form_factor": "narrow"
         }
     ],
     "icons": [
