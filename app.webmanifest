@@ -12,12 +12,8 @@
         {
             "src": "./img/screenshots/screenshot1.png",
             "type": "image/png",
-            "sizes": "377x832"
-        },
-        {
-            "src": "./img/screenshots/screenshot2.png",
-            "type": "image/png",
-            "sizes": "377x833"
+            "sizes": "377x832",
+            "form_factor": "wide"
         }
     ],
     "icons": [

@@ -1,239 +1,286 @@
 :root {
-    --color-naranja: #e17055;
-    --color-blanco: #f8f5f5;
+  --color-naranja: #e17055;
+  --color-blanco: #f8f5f5;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #d63031;
-    font-family: 'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #d63031;
+  font-family: "Rubik", sans-serif;
 }
 
 body {
-    background-color: var(--color-naranja);
-    min-height: 100vh;
+  background-color: var(--color-naranja);
+  min-height: 100vh;
+  user-select: none;
 }
 
 header {
-    padding-block: 1rem;
+  padding-block: 1rem;
 }
 
 .nav {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    align-items: flex-start;
-    justify-content: center;
-    padding-inline: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  padding-inline: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#pokemon-logo {
+  display: block;
+  margin: 0 auto;
 }
 
 #pokemon-logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 main {
-    padding: 2rem;
-    max-width: 1000px;
-    margin: 0 auto;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .pokemon-todos {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 @media screen and (min-width: 470px) {
-    .pokemon-todos {
-        grid-template-columns: 1fr 1fr;
-    }
+  .pokemon-todos {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media screen and (min-width: 700px) {
-    .pokemon-todos {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+  .pokemon-todos {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .pokemon {
-    border-radius: 1rem;
-    background-color: #fab1a0;
-    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .25);
-    padding-block: 1rem;
-    text-transform: uppercase;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+  border-radius: 1rem;
+  background-color: #fab1a0;
+  box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.25);
+  padding-block: 1rem;
+  text-transform: uppercase;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 
 .pokemon-id-back {
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 6rem;
-    font-weight: 800;
-    z-index: -1;
-    color: var(--color-blanco);
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6rem;
+  font-weight: 800;
+  z-index: -1;
+  color: var(--color-blanco);
 }
 
 .pokemon-imagen {
-    padding-inline: 1rem;
-    display: flex;
-    justify-content: center;
+  padding-inline: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .pokemon-imagen img {
-    width: 100%;
-    max-width: 6rem;
+  width: 100%;
+  max-width: 6rem;
 }
 
 .div-buscador {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .buscador-input {
-    font-family: inherit;
-    font-size: inherit;
-    background-color: #f4f2f2;
-    border: none;
-    color: #646464;
-    padding: 0.7rem 1rem;
-    border-radius: 30px;
-    width: 12em;
-    transition: all ease-in-out .5s;
-    margin-right: -2rem;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: none;
+  color: #646464;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  width: 12em;
+  transition: all ease-in-out 0.5s;
+  margin-right: -2rem;
 }
 
 .buscador-input:hover,
 .buscador-input:focus {
-    box-shadow: 0 0 1em #00000013;
+  box-shadow: 0 0 1em #00000013;
 }
 
 .buscador-input:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px #fab1a0;
+  outline: none;
+  box-shadow: 0 0 0 3px #fab1a0;
 }
 
 .buscador-input::-webkit-input-placeholder {
-    font-weight: 100;
-    color: #ccc;
+  font-weight: 100;
+  color: #ccc;
 }
 
 .buscador-icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: #b4b4b4;
+  height: 1.3em;
+  width: 1.3em;
+  fill: #b4b4b4;
 }
 
 .pokemon-info {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    padding-inline: 1rem;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  align-items: center;
+  text-align: center;
 }
 
 .nombre-contenedor {
-    display: flex;
-    align-items: center;
-    column-gap: .5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pokemon-id {
-    background-color: var(--color-blanco);
-    padding: .25rem .5rem;
-    border-radius: 100vmax;
-    font-size: .75rem;
-    font-weight: 500;
+  background-color: var(--color-blanco);
+  padding: 0.25rem 0.5rem;
+  border-radius: 100vmax;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .pokemon-nombre {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 .pokemon-tipos {
-    display: flex;
-    gap: .5rem;
-    font-size: .75rem;
-    font-weight: 500;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tipo {
-    padding: .25rem .5rem;
-    border-radius: 100vmax;
-    background-color: #ff7675;
-    color: var(--color-blanco);
+  padding: 0.25rem 0.5rem;
+  border-radius: 100vmax;
+  background-color: #ff7675;
+  color: var(--color-blanco);
 }
 
 .pokemon-stats {
-    display: flex;
-    gap: 1rem;
-    font-size: .85rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
 }
 
 .stats {
-    background-color: var(--color-blanco);
-    padding: .25rem .5rem;
-    border-radius: 100vmax;
+  background-color: var(--color-blanco);
+  padding: 0.25rem 0.5rem;
+  border-radius: 100vmax;
 }
 
 /* Estilos para el paginador */
 
 .paginador {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .paginador-btn {
-    padding: 0.5rem 1rem;
-    background-color: var(--color-blanco);
-    color: var(--color-naranja);
-    border: none;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-blanco);
+  color: var(--color-naranja);
+  border: none;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 0.5rem;
 }
 
 .paginador-btn:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .paginador-btn:hover {
-    background-color: #f4f2f2;
+  background-color: #f4f2f2;
 }
 
 .paginador-btn:disabled {
-    background-color: #d1d1d1;
-    cursor: not-allowed;
+  background-color: #d1d1d1;
+  cursor: not-allowed;
 }
 
-
 @media (display-mode: standalone) {
-    #btn-instalar {
-        display: none;
-    }
+  #btn-instalar {
+    display: none;
+  }
 }
 
 @media (display-mode: browser) {
-    #btn-instalar {
-        background-color: black;
-        color: white
-    }
+  #btn-instalar {
+    --bg: #e74c3c;
+    --text-color: #fff;
+    position: relative;
+    width: 120px;
+    border: none;
+    background: var(--bg);
+    color: var(--text-color);
+    padding: 0.6em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.2s;
+    border-radius: 5px;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
+  }
+
+  #btn-instalar:hover {
+    opacity: 1;
+  }
+
+  #btn-instalar:active {
+    top: 4px;
+    box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #pokemon-logo {
+    margin: 0;
+  }
+
+  .div-buscador {
+    margin-top: 10px;
+  }
+
+  #btn-instalar {
+    margin-top: 10px;
+  }
 }
