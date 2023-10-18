@@ -4,7 +4,7 @@
     "display": "standalone",
     "theme_color": "#d63031",
     "background_color": "#232322",
-    "start_url": "/pwa",
+    "start_url": "/pokedex-js",
     "scope": "./",
     "id": "/",
     "description": "Aplicación que muestra la información general de todos los pokemons registrados",
@@ -18,7 +18,7 @@
         {
             "src": "./img/screenshots/screenshot1.png",
             "type": "image/png",
-            "sizes": "377x832",
+            "sizes": "777x1600",
             "form_factor": "narrow"
         }
     ],
