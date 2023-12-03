@@ -1,5 +1,5 @@
 let registracionSW;
-navigator.serviceWorker.register("/sw.js").then(registracion => {
+navigator.serviceWorker.register("/pokedex-js/sw.js").then(registracion => {
     registracionSW = registracion;
 });
 
